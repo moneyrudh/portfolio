@@ -1,5 +1,9 @@
+import { useState } from 'react';
+
 export default function Projects() {
-    const projects = [
+    const [activeTab, setActiveTab] = useState('tech');
+    
+    const softwareProjects = [
         {
             name: "petspert",
             description:
@@ -19,12 +23,49 @@ export default function Projects() {
         {
             name: "w lang",
             description:
-                "a programming language that is transpiled to c with lexer coded using flex",
+                "a programming language that is transpiled to c, written in c",
             tech: "c, flex",
             link: "https://github.com/moneyrudh/w-lang",
             year: "2024",
         }
     ];
+
+    const gameProjects = [
+        {
+            name: "sisyphi",
+            description:
+                "ai-driven multiplayer game where player-input text prompts generate unique competitive maps with real-time physics and environment-affecting skill moves",
+            tech: "unity, c#, netcode for gameobjects, openai api, anthropic api, groq",
+            link: "https://www.linkedin.com/posts/anirudhananth_through-an-advanced-project-course-in-collaboration-activity-7268006287957753856-3R2g",
+            year: "2024",
+        },
+        {
+            name: "veilmyst",
+            description:
+                "2d platformer inspired by celeste and hollow knight featuring complex level designs and a custom character movement system",
+            tech: "unity, c#",
+            link: "https://dotmoney.itch.io/veilmyst",
+            year: "2024",
+        },
+        {
+            name: "f22raptor",
+            description:
+                "infinite-scroll hypercasual strategy based flight game written in pure c, compiled to webassembly with daily leaderboards and submission tracking",
+            tech: "c, sdl",
+            link: "https://f22raptor.xyz",
+            year: "2024",
+        }
+    ];
+
+    const moreProjectsLinks = {
+        'tech': "https://github.com/moneyrudh",
+        'games': "https://dotmoney.itch.io/"
+    };
+
+    const projectsByTab = {
+        'tech': softwareProjects,
+        'games': gameProjects
+    };
 
     return (
         <section className="mb-24">
@@ -32,8 +73,26 @@ export default function Projects() {
                 projects
             </h2>
 
+            {/* Tabs */}
+            <div className="flex mb-8 border-b border-maroon-800/40 w-full">
+                {['tech', 'games'].map((tab) => (
+                    <button
+                        key={tab}
+                        onClick={() => setActiveTab(tab)}
+                        className={`w-1/2 py-2 text-lg transition-colors relative text-center hover:bg-maroon-500 hover:bg-opacity-15 hover:rounded-sm ${
+                            activeTab === tab 
+                                ? 'text-maroon-200 after:content-[""] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-maroon-500' 
+                                : 'text-maroon-400 hover:text-maroon-300'
+                        }`}
+                    >
+                        {tab}
+                    </button>
+                ))}
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {projects.map((project, index) => (
+                {/* Regular project cards */}
+                {projectsByTab[activeTab].map((project, index) => (
                     <div
                         key={index}
                         className="bg-maroon-900/40 backdrop-blur-sm rounded-md p-6 hover:bg-maroon-800/30 transition-colors"
@@ -59,6 +118,22 @@ export default function Projects() {
                         </a>
                     </div>
                 ))}
+
+                {/* "More projects" card */}
+                <div className="backdrop-blur-sm rounded-md p-6 transition-colors flex flex-col justify-center items-center">
+                    <h3 className="text-lg text-maroon-200 mb-6">check out more</h3>
+                    
+                    <div className="flex justify-center w-full">
+                        <a
+                            href={moreProjectsLinks[activeTab]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center px-4 py-2 border border-maroon-500 rounded text-maroon-300 hover:text-maroon-200 hover:bg-maroon-800/50 transition-colors"
+                        >
+                            {activeTab === 'tech' ? 'github →' : 'itch →'}
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
     );
