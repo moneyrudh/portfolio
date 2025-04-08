@@ -5,39 +5,39 @@ export default function Projects() {
     
     const softwareProjects = [
         {
+            name: "pikflix",
+            description:
+                "ai movie recommendation app using natural language queries to transform plain english requests into personalized film recommendations",
+            tech: "next.js, typescript, dynamodb, python, aws lambda, tmdb api",
+            link: "https://pikflix.app/",
+            year: "2025",
+        },
+        {
             name: "petspert",
             description:
-                "an intelligent pet health rag system with data from wikipedia and national library of medicine covering 150+ species of dogs, cats, birds, and horses",
+                "(ongoing) an intelligent pet health rag system with data from wikipedia and national library of medicine covering 150+ species of dogs, cats, birds, and horses",
             tech: "next.js, python, fastapi, postgresql, supabase, langchain, anthropic api",
             link: "https://www.petspert.app/",
             year: "2025",
         },
         {
-            name: "jobbin",
-            description:
-                "chrome extension that tracks job applications on multiple job boards with a user-friendly dashboard",
-            tech: "react, node.js, javascript, tailwind, postgresql, express.js, openai api, anthropic api",
-            link: "https://chromewebstore.google.com/detail/jobbin/lbfabagnifhinlikbjkddkjindmabcfp",
-            year: "2024",
-        },
-        {
             name: "w lang",
             description:
-                "a programming language that is transpiled to c, written in c",
+                "(ongoing) a programming language that is transpiled to and run in c, written in c",
             tech: "c, flex",
             link: "https://github.com/moneyrudh/w-lang",
-            year: "2024",
+            year: "2025",
         }
     ];
-
+    
     const gameProjects = [
         {
             name: "sisyphi",
             description:
                 "ai-driven multiplayer game where player-input text prompts generate unique competitive maps with real-time physics and environment-affecting skill moves",
-            tech: "unity, c#, netcode for gameobjects, openai api, anthropic api, groq",
-            link: "https://www.linkedin.com/posts/anirudhananth_through-an-advanced-project-course-in-collaboration-activity-7268006287957753856-3R2g",
-            year: "2024",
+            tech: "unity, c#, netcode for gameobjects, anthropic api",
+            link: "https://store.steampowered.com/app/3593190/Sisyphi/",
+            year: "2025",
         },
         {
             name: "veilmyst",
@@ -53,7 +53,7 @@ export default function Projects() {
                 "infinite-scroll hypercasual strategy based flight game written in pure c, compiled to webassembly with daily leaderboards and submission tracking",
             tech: "c, sdl",
             link: "https://f22raptor.xyz",
-            year: "2024",
+            year: "2025",
         }
     ];
 
@@ -114,7 +114,7 @@ export default function Projects() {
                             rel="noopener noreferrer"
                             className="inline-flex items-center text-maroon-300 hover:text-maroon-200 transition-colors"
                         >
-                            view project →
+                            {activeTab === 'tech' ? 'view project ' : 'play game ' } →
                         </a>
                     </div>
                 ))}
